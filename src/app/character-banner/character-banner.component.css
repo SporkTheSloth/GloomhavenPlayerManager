@@ -1,0 +1,15 @@
+.container {
+  justify-content: flex-start safe;
+}
+
+.item {
+  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+}
+
+.banner {
+  padding-left: 30px;
+}
+
+.bg-dark {
+  background-color: #212529;
+}

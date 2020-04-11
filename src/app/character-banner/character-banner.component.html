@@ -1,0 +1,22 @@
+<div class="container bg-dark">
+  <div class="row">
+    <div *ngIf="player$ | async as playerProfile; else loading">
+      <div class="lobby banner col-4"><img src="./../../assets/classes/{{playerProfile.Class}}/classImage.png" width="250" height="250"/></div>
+      <div class="lobby banner details">
+        <div class = "row">
+          <div class="lobby banner"><h2>{{playerProfile.Name}}</h2></div>
+        </div>
+        <div class = "row">
+          <div class="lobby banner"><h2>{{playerProfile.Level}}</h2></div>
+        </div>
+        <div class = "row">
+          <div class="lobby banner"><h2>{{playerProfile.Experience}}</h2></div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <div>Loading...</div>
+    </ng-template>
+  </div>
+</div>
