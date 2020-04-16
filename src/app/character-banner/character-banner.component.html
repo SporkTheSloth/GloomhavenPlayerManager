@@ -1,5 +1,6 @@
 <div class="container">
-  <div *ngFor="let player of playerData">
+  <div *ngIf="singlePlayer as player; else unselected">
+  <!--- <div *ngFor="let player of playerData"> --->
     <div class="row">
       <div class="col-3 class-picture-frame border-right-0">
           <img id="class-picture" class="image img-responsive stretch" src="./../../assets/classes/{{player.Class}}/classImage.png"/>
@@ -25,8 +26,9 @@
             </div>
           </div>
       </div>
-    </div>
-  </div>
+    </div> <!--- row --->
+  <!--- </div> <!-- ngFor --->
+  </div> <!--- ngIf --->
   <!--- Template for a banner without a found character --->
   <ng-template #unselected>
     <div class="row">
@@ -36,11 +38,8 @@
       <div class="col-9 player-info d-flex flex-column rounded-right">
           <div class = "pi-name flex-grow-1">
             <section class="glowfield">
-              <form #pnameForm="ngForm" class="form-name">
-          		    <input type="text" id="playerName" class="form-control" ngModel name="playerName" #playerName="ngModel" placeholder="Enter Player Name" onblur="">
-                  <button type="submit" class="btn btn-success" [disabled]="!pnameForm.form.valid">
-                    <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
-                  </button>
+              <form #pnameForm="ngForm" class="form-name" onSubmit="{{setPlayer(playerName.value)}}">
+          		    <input type="text" id="playerName" class="form-control" ngModel name="playerName" #playerName="ngModel" placeholder="Enter Player Name" (blur)="setPlayer($event.target.value)">
               </form>
             </section>
           </div>

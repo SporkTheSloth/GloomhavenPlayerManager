@@ -15,6 +15,7 @@ export class CharacterBannerComponent implements OnInit {
 
   public player$;
   playerData : any = [];
+  singlePlayer : Player;
   constructor(private service: FireService) { }
 
 
@@ -28,10 +29,47 @@ ngOnInit() {
    })
  }
 
- updatePlayer(name:String)
- {
-   console.log("HELP ME");
+ isPlayer(name: string) {
+   for (let entry of this.playerData)
+   {
+     if(entry.Name === name)
+     {
+       return true;
+     }
+   }
+   return false;
  }
+
+ setPlayer(name: string) {
+   if(this.isPlayer(name))
+   {
+     this.updatePlayer(name);
+   }
+ }
+
+testingPlayer() {
+  this.service.getPlayer("Buttercup").snapshotChanges().subscribe( item => {
+      let a = item.payload.toJSON();
+      if(Object.keys(a).length > 0)
+      {
+        a['$key'] = item.key;
+        this.singlePlayer = (a as Player);
+      }
+    })
+}
+ updatePlayer(name: string)
+ {
+   if (this.service.getPlayer(name))
+   {
+     this.service.getPlayer(name).snapshotChanges().subscribe( item => {
+          let a = item.payload.toJSON();
+          a['$key'] = item.key;
+          this.singlePlayer = (a as Player);
+     })
+   }
+ }
+
+
 
   log(x)
   {console.log(x)};
