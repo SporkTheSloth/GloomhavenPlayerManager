@@ -1,0 +1,13 @@
+<div class="container" id="ct-classes">
+  <h3>Select new class</h3>
+  <div class="col-md-8" id="classes-images">
+    <div *ngFor="let class of classData"> <!--- Loop to create grid --->
+      <div class="ct-image">
+        <img  id="{{class.Name}}" class="class-logo-img" src="./../../assets/classes/{{class.Name}}/classLogo.png" (click)="setSelected()"/>
+      </div>
+    </div><!--- Loop to create grid --->
+  </div>
+  <div class="buttons">
+    BUTTONS GO HERE
+  </div>
+</div>

@@ -1,44 +1,57 @@
 <div class="container">
   <div *ngIf="singlePlayer as player; else unselected">
   <!--- <div *ngFor="let player of playerData"> --->
-    <div class="row">
-      <div class="col-3 class-picture-frame border-right-0">
+    <div class="d-flex flex-row"> <!--- full banner row --->
+      <div class="d-flex flex-column column col-3 class-picture-frame border-right-0"> <!--- Class Image --->
           <img id="class-picture" class="image img-responsive stretch" src="./../../assets/classes/{{player.Class}}/classImage.png"/>
       </div>
-      <div class="col-9 player-info d-flex flex-column rounded-right">
-          <div class = "pi-name flex-grow-1">
+      <div class="d-flex col-6 player-info flex-column column"> <!--- Name Exp Level --->
+        <div class="d-flex flex-row flex-grow-1 pi-name"> <!--- Name ROW --->
             <h1 id="player-name">{{player.Name}}</h1>
-          </div>
-          <div class = "pi-level">
+        </div>
+        <div class="d-flex flex-row pi-level"> <!--- Level ROW --->
             <div class = "pi-level-label">
               <h3 id="level-label">Level</h3>
             </div>
             <div class="pi-level-bar progress">
               <div class="progress-bar pb-level" role="progressbar" style="width: {{levelProgress(player.Experience)}}%;" aria-valuenow="{{player.Level}}" aria-valuemin="0" aria-valuemax="9">{{player.Level}}</div>
             </div>
-          </div>
-          <div class = "pi-exp">
+        </div>
+        <div class="d-flex flex-row pi-exp"> <!--- Exp ROW --->
             <div class = "pi-exp-label">
               <h3 id="exp-label">Experience</h3>
             </div>
             <div class="pi-exp-bar progress">
               <div class="progress-bar pb-exp" role="progressbar" style="width: {{expProgress(player.Experience)}}%;" aria-valuenow="{{player.Experience}}" aria-valuemin="0" aria-valuemax="100">{{player.Experience}}</div>
             </div>
-          </div>
-      </div>
-    </div> <!--- row --->
+        </div>
+      </div><!--- Name Exp Level --->
+      <div class="col-3 player-logo d-flex flex-column column"> <!--- Logo Coins Health --->
+        <div class="d-flex flex-row class-logo flex-grow-1"> <!--- Logo --->
+          <img id="class-logo-img" class="image img-responsive stretch border rounded" src="./../../assets/classes/{{player.Class}}/classLogo.png"/>
+        </div>
+        <div class="d-flex flex-row"> <!--- Health --->
+          <div><h4 id="health-label" class="gloomText">Health</h4></div>
+          <div><h5 id="health" class="gloomText">{{getHealth(player.Class, player.Level)}}</h5></div>
+        </div>
+        <div class="d-flex flex-row"><!--- Coins --->
+          <div><h4 id="coins-label" class="gloomText">Coins</h4></div>
+          <div><h5 id="coins" class="gloomText">{{player.Coins}}</h5></div>
+        </div>
+      </div> <!--- Logo Coins Health --->
+    </div> <!--- full banner row --->
   <!--- </div> <!-- ngFor --->
   </div> <!--- ngIf --->
   <!--- Template for a banner without a found character --->
   <ng-template #unselected>
-    <div class="row">
+    <div class="d-flex flex-row">
       <div class="col-3 class-picture-frame-u border-right-0">
           <img id="class-picture-select" class="image img-responsive stretch" src="./../../assets/classes/Unselected/classImage.png"/>
       </div>
       <div class="col-9 player-info d-flex flex-column rounded-right">
           <div class = "pi-name flex-grow-1">
             <section class="glowfield">
-              <form #pnameForm="ngForm" class="form-name" onSubmit="{{setPlayer(playerName.value)}}">
+              <form #pnameForm="ngForm" class="form-name" onSubmit="">
           		    <input type="text" id="playerName" class="form-control" ngModel name="playerName" #playerName="ngModel" placeholder="Enter Player Name" (blur)="setPlayer($event.target.value)">
               </form>
             </section>

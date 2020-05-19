@@ -158,4 +158,144 @@ testingPlayer() {
     let prog = ((exp-base)/(cap-base))*100;
     return Math.trunc(prog);
   }
+
+  getHealth(pclass, plevel) {
+    const light: Array<string> = ['BeastTyrant','Elementalist','MindThief','Diviner','PlagueHerald','SoothSinger','SpellWeaver'];
+    const medium: Array<string> = ['BladeSwarm','DoomStalker','NightShroud','SawBones','Scoundrel','Summoner','Tinkerer'];
+    const heavy: Array<string> = ['Bear','Beserker','Brute','CragHeart','QuarterMaster','SunKepper'];
+    let currentHealth = 0;
+    if(light.indexOf(pclass) > -1)
+    {
+      switch(plevel){
+        case 1: {
+          currentHealth = 6;
+          break;
+        }
+        case 2: {
+          currentHealth = 7;
+          break;
+        }
+        case 3: {
+          currentHealth = 8;
+          break;
+        }
+        case 4: {
+          currentHealth = 9;
+          break;
+        }
+        case 5: {
+          currentHealth = 10;
+          break;
+        }
+        case 6: {
+          currentHealth = 11;
+          break;
+        }
+        case 7: {
+          currentHealth = 12;
+          break;
+        }
+        case 8: {
+          currentHealth = 13;
+          break;
+        }
+        case 9: {
+          currentHealth = 14;
+          break;
+        }
+        default: {
+          currentHealth = 6;
+          break;
+        }
+      }
+    } else if (medium.indexOf(pclass) > -1)
+    {
+      switch(plevel){
+        case 1: {
+          currentHealth = 8;
+          break;
+        }
+        case 2: {
+          currentHealth = 9;
+          break;
+        }
+        case 3: {
+          currentHealth = 11;
+          break;
+        }
+        case 4: {
+          currentHealth = 12;
+          break;
+        }
+        case 5: {
+          currentHealth = 14;
+          break;
+        }
+        case 6: {
+          currentHealth = 15;
+          break;
+        }
+        case 7: {
+          currentHealth = 17;
+          break;
+        }
+        case 8: {
+          currentHealth = 18;
+          break;
+        }
+        case 9: {
+          currentHealth = 20;
+          break;
+        }
+        default: {
+          currentHealth = 8;
+          break;
+        }
+      }
+    } else {
+      switch(plevel){
+        case 1: {
+          currentHealth = 10;
+          break;
+        }
+        case 2: {
+          currentHealth = 12;
+          break;
+        }
+        case 3: {
+          currentHealth = 14;
+          break;
+        }
+        case 4: {
+          currentHealth = 16;
+          break;
+        }
+        case 5: {
+          currentHealth = 18;
+          break;
+        }
+        case 6: {
+          currentHealth = 20;
+          break;
+        }
+        case 7: {
+          currentHealth = 22;
+          break;
+        }
+        case 8: {
+          currentHealth = 24;
+          break;
+        }
+        case 9: {
+          currentHealth = 26;
+          break;
+        }
+        default: {
+          currentHealth = 10;
+          break;
+        }
+      }
+    }
+    return currentHealth;
+  }
 }

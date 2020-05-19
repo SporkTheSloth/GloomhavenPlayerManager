@@ -8,10 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CharacterBannerComponent } from './character-banner/character-banner.component';
 import { FireService } from './services/fire.service';
+import { ClassSelectionComponent } from './class-selection/class-selection.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CharacterBannerComponent
+    CharacterBannerComponent,
+    ClassSelectionComponent
   ],
   imports: [
     BrowserModule,

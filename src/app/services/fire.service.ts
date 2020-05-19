@@ -10,6 +10,7 @@ export class FireService {
   playerPath: string = '/Player';
   playersRef: AngularFireList<any[]>;
   playerRef: AngularFireObject<any>;
+  classRef: AngularFireList<any>;
 
   constructor(private fdb: AngularFireDatabase) { }
 
@@ -18,6 +19,11 @@ getPlayerList() {
   console.log("Players");
   console.log(this.playersRef);
   return this.playersRef;
+}
+
+getClassList() {
+  this.classRef = this.fdb.list('/Classes');
+  return this.classRef;
 }
 
 getPlayer(id: string) {
