@@ -9,11 +9,15 @@ import { AppComponent } from './app.component';
 import { CharacterBannerComponent } from './character-banner/character-banner.component';
 import { FireService } from './services/fire.service';
 import { ClassSelectionComponent } from './class-selection/class-selection.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { CardsComponent } from './cards/cards.component';
 @NgModule({
   declarations: [
     AppComponent,
     CharacterBannerComponent,
-    ClassSelectionComponent
+    ClassSelectionComponent,
+    SidebarComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,

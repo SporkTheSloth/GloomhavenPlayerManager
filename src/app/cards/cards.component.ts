@@ -6,14 +6,13 @@ import { Class } from './../services/db-objects/class';
 import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'class-selection',
-  templateUrl: './class-selection.component.html',
-  styleUrls: ['./class-selection.component.css']
+  selector: 'cards',
+  templateUrl: './cards.component.html',
+  styleUrls: ['./cards.component.css']
 })
-export class ClassSelectionComponent implements OnInit {
-classData : any = [];
+export class CardsComponent implements OnInit {
 
-  constructor(private service: FireService) { }
+  constructor() {private service: FireService}
 
   ngOnInit(): void {
     this.service.getClassList().snapshotChanges().subscribe( p => {
@@ -25,11 +24,4 @@ classData : any = [];
     })
   }
 
-//Create selectable images - NOT YET IMPLEMENTED
-setSelected(id): void {
-  var classSelected = document.querySelectorAll(".class-selected");
-  var selectedClass = classSelected[0];
-  selectedClass.classList.remove("class-selected");
-  	document.getElementById("NightShroud").classList.add("class-selected");
-}
 }
